@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+    // ツイート関連
+    Route::resource('tweets', 'TweetsController', ['only' => ['index', 'create', 'store']]);
