@@ -22,4 +22,10 @@ class User extends Authenticatable
         'profile_image_url',
         'twitter_token'
     ];
+
+    public function getUserInfo(string $twitter_token)
+    {
+        // sqlのwhere句
+        return $this->where('twitter_token', $twitter_token)->first();
+    }
 }
