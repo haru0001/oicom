@@ -26,6 +26,6 @@ class User extends Authenticatable
     public function getUserInfo(string $twitter_token)
     {
         // sqlのwhere句
-        return $this->where('twitter_token', $twitter_token)->first();
+        return $this->where('twitter_token', $twitter_token)->first()->toArray();
     }
 }

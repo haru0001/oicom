@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
                 'screen_name'        => 'test' .$i,
                 'name'               => 'TEST' .$i,
                 'profile_image_url'  => 'https://placehold.jp/50x50.png',
-                'twitter_token'      => str_random(10),
+                'twitter_token'      => 'abcdefghi' .$i,
                 'created_at'         => now(),
                 'updated_at'         => now()
             ]);

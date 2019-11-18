@@ -13,7 +13,8 @@ class TweetsController extends Controller
 
     public function __construct()
     {
-        $this->twitter_token = 's1KUI1HdUh';
+        // 仮トークン
+        $this->twitter_token = 'abcdefghi0';
     }
 
     /**
@@ -26,9 +27,9 @@ class TweetsController extends Controller
         // ユーザー情報取得
         $user_info = $user->getUserInfo($this->twitter_token);
         // ユーザーツイート情報取得
-        $tweets = $tweet->getUserTweets($user_info->id);
+        $tweets = $tweet->getUserTweets($user_info['id']);
 
-        return view('tweets.index', compact('tweets'));
+        return view('tweets.index', compact('user_info', 'tweets'));
     }
 
     /**
