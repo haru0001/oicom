@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Tweet;
 
@@ -29,7 +30,7 @@ class TweetsController extends Controller
         // ユーザーツイート情報取得
         $tweets = $tweet->getUserTweets($user_info['id']);
 
-        return view('tweets.index', compact('user_info', 'tweets'));
+        return view('dashboard.tweets.index', compact('user_info', 'tweets'));
     }
 
     /**

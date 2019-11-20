@@ -11,9 +11,36 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// TOPページ
+Route::group(['namespace' => 'Home'], function ()
+{
+    Route::group(['prefix' => '/'], function ()
+    {
+        Route::get('/', 'HomesController@index');
+    });
 });
 
-    // ツイート関連
-    Route::resource('tweets', 'TweetsController', ['only' => ['index', 'create', 'store']]);
+// TwitterOAuth認証
+Route::group(['namespace' => 'OAuth'], function ()
+{
+    Route::group(['prefix' => 'twitter'], function ()
+    {
+        Route::get('/', 'TwitterLoginController@oauth');
+        Route::get('callback', 'TwitterLoginController@callback');
+    });
+});
+
+// TwitterOAuth認証後のページ
+Route::group(['namespace' => 'Dashboard'], function ()
+{
+    Route::group(['prefix' => 'dashboard'], function ()
+    {
+        // TOP
+        Route::get('/', 'DashboardsController@index');
+        // ツイート関連
+        Route::resource('tweet', 'TweetsController', ['only' => ['index', 'create', 'store']]);
+        // テスト
+        Route::get('test', 'TestsController@index');
+    });
+});
+
