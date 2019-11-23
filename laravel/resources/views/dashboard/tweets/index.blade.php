@@ -23,6 +23,11 @@
                             <div class="card-body">
                                 {!! nl2br(e($tweet['text'])) !!}
                             </div>
+                            <div class="card-footer">
+                                @if ($tweet['cron'])
+                                    <p>{{ $tweet['cron']['reservation_at'] }}</p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
