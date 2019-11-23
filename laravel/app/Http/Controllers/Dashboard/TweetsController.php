@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Tweet;
+use App\Cron;
+use App\Http\Requests\TweetStoreRequest;
 
 class TweetsController extends Controller
 {
@@ -38,9 +40,12 @@ class TweetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        // ユーザー情報取得
+        $user_info = $user->getUserInfo($this->twitter_token);
+
+        return view('dashboard.tweets.create', compact('user_info'));
     }
 
     /**
@@ -49,9 +54,29 @@ class TweetsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TweetStoreRequest $request, User $user, Tweet $tweet, Cron $cron)
     {
-        //
+        // ユーザー情報取得
+        $user_info = $user->getUserInfo($this->twitter_token);
+
+        // ユーザーIDとツイート内容を配列に格納
+        $tweet_data = [
+            'user_id' => $user_info['id'],
+            'text'    => $request->text
+        ];
+
+        $tweet_id = $tweet->tweetStore($tweet_data);
+
+        // ユーザーIDとツイート内容を配列に格納
+        $cron_data = [
+            'tweet_id'           => $tweet_id,
+            'reservation_at'     => $request->reservation_at,
+            'tweet_complate_flg' => 0
+        ];
+
+        $cron->cronStore($cron_data);  
+
+        return redirect('dashboard/tweets');
     }
 
     /**

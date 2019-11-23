@@ -38,7 +38,7 @@ Route::group(['namespace' => 'Dashboard'], function ()
         // TOP
         Route::get('/', 'DashboardsController@index');
         // ツイート関連
-        Route::resource('tweet', 'TweetsController', ['only' => ['index', 'create', 'store']]);
+        Route::resource('tweets', 'TweetsController', ['only' => ['index', 'create', 'store']]);
         // テスト
         Route::get('test', 'TestsController@index');
     });
