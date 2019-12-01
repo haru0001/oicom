@@ -39,13 +39,9 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <a href="{{ url('twitter/logout') }}" class="dropdown-item">
                                     Logout
                                 </a>
-
-                                <form id="logout-form" action="" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
                             </div>
                         </li>
                     </ul>
