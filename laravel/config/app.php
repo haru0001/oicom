@@ -177,7 +177,9 @@ return [
         // TwitterSocialite
         Laravel\Socialite\SocialiteServiceProvider::class,
         // TwitterOAuht
-        App\Providers\TwitterServiceProvider::class
+        App\Providers\TwitterServiceProvider::class,
+        // ViewComposer
+        App\Providers\ViewServiceProvider::class
 
     ],
 
