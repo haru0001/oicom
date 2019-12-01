@@ -14,7 +14,7 @@
 // TOPページ
 Route::group(['namespace' => 'Home', 'prefix' => '/'], function ()
 {
-    Route::get('/', 'HomesController@index');
+    Route::get('/', 'HomesController@index')->name('/');
 });
 
 // TwitterOAuth認証
