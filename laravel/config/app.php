@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://127.0.0.1'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // TwitterSocialite
+        Laravel\Socialite\SocialiteServiceProvider::class,
         // TwitterOAuht
         App\Providers\TwitterServiceProvider::class
 
@@ -227,6 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // TwitterSocialite
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         // TwitterOAuth
         'Twitter' => App\Facades\Twitter::class,
 

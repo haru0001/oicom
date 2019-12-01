@@ -12,35 +12,26 @@
 */
 
 // TOPページ
-Route::group(['namespace' => 'Home'], function ()
+Route::group(['namespace' => 'Home', 'prefix' => '/'], function ()
 {
-    Route::group(['prefix' => '/'], function ()
-    {
-        Route::get('/', 'HomesController@index');
-    });
+    Route::get('/', 'HomesController@index');
 });
 
 // TwitterOAuth認証
-Route::group(['namespace' => 'OAuth'], function ()
+Route::group(['namespace' => 'Auth', 'prefix' => 'twitter'], function ()
 {
-    Route::group(['prefix' => 'twitter'], function ()
-    {
-        Route::get('/', 'TwitterLoginController@oauth');
-        Route::get('callback', 'TwitterLoginController@callback');
-    });
+    Route::get('/', 'LoginController@redirectToProvider');
+    Route::get('callback', 'LoginController@handleProviderCallback');
+    Route::get('logout', 'LoginController@logout');
 });
 
 // TwitterOAuth認証後のページ
-Route::group(['namespace' => 'Dashboard'], function ()
+Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function ()
 {
-    Route::group(['prefix' => 'dashboard'], function ()
-    {
-        // TOP
-        Route::get('/', 'DashboardsController@index');
-        // ツイート関連
-        Route::resource('tweets', 'TweetsController', ['only' => ['index', 'create', 'store']]);
-        // テスト
-        Route::get('test', 'TestsController@index');
-    });
+    // TOP
+    Route::get('/', 'DashboardsController@index');
+    // ツイート関連
+    Route::resource('tweets', 'TweetsController', ['only' => ['index', 'create', 'store']]);
+    // テスト
+    Route::get('test', 'TestsController@index');
 });
-
