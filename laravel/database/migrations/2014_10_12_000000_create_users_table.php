@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('profile_image_url');
             $table->string('twitter_token');
+            $table->string('twitter_token_secret');
+            $table->string('email');
             $table->timestamps();
         });
     }
