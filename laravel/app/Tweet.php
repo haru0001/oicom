@@ -35,7 +35,6 @@ class Tweet extends Model
     // ツイートを保存して発行されたツイートIDを戻り値に渡す
     public function tweetStore(array $data)
     {
-        $this->fill($data)->save();
-        return $this->id;
+        return $this->fill($data)->save();
     }
 }

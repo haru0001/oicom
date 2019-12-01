@@ -6,12 +6,12 @@
             <h3 class="page-title"> Form elements </h3>
         </div>
         <div class="row">
-            @if (isset($tweets))
+            @if (!empty($tweets))
                 @foreach ($tweets as $tweet)
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-haeder p-3 w-100 d-flex">
-                                <img src="https://placehold.jp/50x50.png" class="rounded-circle" width="50" height="50">
+                            <img src="{{ $user_info['profile_image_url'] }}" class="rounded-circle" width="50" height="50">
                                 <div class="ml-2 d-flex flex-column">
                                     <p class="mb-0">{{ $user_info['name'] }}</p>
                                     <a href="" class="text-secondary">{{ $user_info['screen_name'] }}</a>
@@ -31,6 +31,14 @@
                         </div>
                     </div>
                 @endforeach
+            @else
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            まだ投稿がありません
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
     </div>
