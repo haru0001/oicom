@@ -25,7 +25,7 @@ class TweetStoreRequest extends FormRequest
     {
         return [
             'text'           => ['required', 'string', 'max:140'],
-            'reservation_at' => ['required', 'date_format:Y-m-d H:i:s']
+            'reservation_at' => ['required', 'date_format:Y-m-d H:i']
         ];
     }
 }

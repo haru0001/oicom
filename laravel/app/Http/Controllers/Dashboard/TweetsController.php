@@ -5,29 +5,18 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
-use App\User;
 use App\Tweet;
 use App\Cron;
 use App\Http\Requests\TweetStoreRequest;
 
 class TweetsController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
+{    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user, Tweet $tweet)
+    public function index(Tweet $tweet)
     {
         $user_info = Auth::user();
         
@@ -42,7 +31,7 @@ class TweetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(User $user)
+    public function create()
     {
         $user_info = Auth::user();
 
@@ -55,7 +44,7 @@ class TweetsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TweetStoreRequest $request, User $user, Tweet $tweet, Cron $cron)
+    public function store(TweetStoreRequest $request, Tweet $tweet, Cron $cron)
     {
         $user_info = Auth::user();
 

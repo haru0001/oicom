@@ -3343,7 +3343,7 @@ pre {
   background-color: #ffffff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: 2px;
+  border-radius: 0.3125rem;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -3355,13 +3355,6 @@ pre {
   .form-control::-ms-expand {
     background-color: transparent;
     border: 0; }
-  .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
-    outline: 0;
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
   .form-control::-webkit-input-placeholder {
     color: #c9c8c8;
     opacity: 1; }
@@ -10298,8 +10291,6 @@ code {
 
 /* Footer */
 .footer {
-  background: #f2edf3;
-  border-top: 1px solid #e7dee9;
   padding: 30px 1rem;
   transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
@@ -12210,10 +12201,7 @@ code {
   border: 1px solid #ebedf2;
   /* font-family: "ubuntu-regular", sans-serif; */
   font-size: 0.8125rem; }
-  .form-control:focus {
-    background-color: #ffffff;
-    color: #000;
-    outline: none; }
+
 
 select.form-control {
   padding: .4375rem .75rem;
@@ -13099,7 +13087,7 @@ dl {
         .sidebar .nav .nav-item.active > .nav-link i {
           color: #b66dff; }
       .sidebar .nav .nav-item:hover {
-        background: #fcfcfc; }
+        background: #e9e9e9; }
       .sidebar .nav .nav-item.nav-profile .nav-link {
         height: auto;
         line-height: 1;
@@ -13343,7 +13331,7 @@ dl {
       width: 100%; } }
 
 .content-wrapper {
-  background: #f2edf3;
+  background: #eeeeee;
   padding: 2.75rem 2.25rem;
   width: 100%;
   -webkit-box-flex: 1;

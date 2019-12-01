@@ -20,9 +20,16 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('/css/vendor.bundle.base.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 
         <!-- Font Awesome -->
-        {{-- <script src="{{ asset('fontawesome/js/all.min.js') }}" type="text/javascript"></script> --}}
+        <script src="{{ asset('fontawesome/js/all.min.js') }}" type="text/javascript"></script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
         
     </head>
     <body>
@@ -35,7 +42,7 @@
                     <ul class="navbar-nav ml-auto align-items-center">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ $user->name }}
+                                {{ str_limit($user->name, $limit = 20, $end = '...') }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -57,28 +64,28 @@
                                     <img src="{{ $user->profile_image_url }}" alt="profile">
                                     <span class="login-status online"></span>
                                 </div>
-                                    <div class="nav-profile-text d-flex flex-column">
-                                    <span class="font-weight-bold mb-2">{{ $user->name }}</span>
-                                    <span class="text-secondary text-small">{{ $user->screen_name }}</span>
+                                <div class="nav-profile-text d-flex flex-column">
+                                    <span class="mb-2">{{ str_limit($user->name, $limit = 15, $end = '...') }}</span>
+                                    <span class="text-secondary text-small">{{ str_limit($user->screen_name, $limit = 20, $end = '...') }}</span>
                                 </div>
-                                <i class="fad fa-bookmark text-success nav-profile-badge"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('dashboard/') }}" class="nav-link">
-                                <span class="menu-title">Dashboard</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ url('dashboard') }}" class="nav-link">
+                                <span class="menu-title">Home</span>
+                            </a>
+                        </li>
+    
+                        <li class="nav-item">
                             <a href="{{ url('dashboard/tweets') }}" class="nav-link">
-                                <span class="menu-title">Tweet List</span>
+                                <span class="menu-title">List</span>
                             </a>
                         </li>
 
                         <li class="nav-item sidebar-actions">
                             <span class="nav-link">
-                                <a href="{{ url('dashboard/tweets/create') }}" class="btn btn-block btn-lg btn-gradient-primary text-white mt-4">追い込む</a>
+                                <a href="{{ url('dashboard/tweets/create') }}" class="btn btn-block btn-lg btn-danger text-white radius mt-4">追い込む</a>
                             </span>
                         </li>
                     </ul>
@@ -86,7 +93,7 @@
 
                 <main class="main-panel">
                     @yield('content')
-                    <footer class="footer">
+                    <footer class="footer bg-dark">
                         <div class="d-sm-flex justify-content-center justify-content-sm-between">
                             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 OICOM All rights reserved.</span>
                         </div>

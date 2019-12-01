@@ -22,7 +22,7 @@ class Tweet extends Model
         return $this->hasOne(Cron::class);
     }
 
-    public function getUserTweets(int $user_id)
+    public function getUserTweets(int $user_id) : Array
     {
         // sqlのwhere句
         return $this->where('user_id', $user_id)
@@ -36,5 +36,17 @@ class Tweet extends Model
     public function tweetStore(array $data)
     {
         return $this->fill($data)->save();
+    }
+
+    // ツイート数のカウント
+    public function getTweetCount(int $user_id) : String
+    {
+        return $this->where('user_id', $user_id)->count();
+    }
+
+    // 直近のツイート情報
+    public function getTweetLatestDate(int $user_id) : Array
+    {
+        return $this->with('cron')->where('user_id', $user_id)->first()->toArray();
     }
 }
