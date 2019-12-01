@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 use App\User;
 use App\Tweet;
 use App\Cron;
@@ -11,15 +12,6 @@ use App\Http\Requests\TweetStoreRequest;
 
 class TweetsController extends Controller
 {
-
-    private $twitter_token;
-
-    public function __construct()
-    {
-        // 仮トークン
-        $this->twitter_token = 'abcdefghi0';
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +19,8 @@ class TweetsController extends Controller
      */
     public function index(User $user, Tweet $tweet)
     {
-        // ユーザー情報取得
-        $user_info = $user->getUserInfo($this->twitter_token);
+        $user_info = Auth::user();
+        
         // ユーザーツイート情報取得
         $tweets = $tweet->getUserTweets($user_info['id']);
 
@@ -42,8 +34,7 @@ class TweetsController extends Controller
      */
     public function create(User $user)
     {
-        // ユーザー情報取得
-        $user_info = $user->getUserInfo($this->twitter_token);
+        $user_info = Auth::user();
 
         return view('dashboard.tweets.create', compact('user_info'));
     }
@@ -56,8 +47,7 @@ class TweetsController extends Controller
      */
     public function store(TweetStoreRequest $request, User $user, Tweet $tweet, Cron $cron)
     {
-        // ユーザー情報取得
-        $user_info = $user->getUserInfo($this->twitter_token);
+        $user_info = Auth::user();
 
         // ユーザーIDとツイート内容を配列に格納
         $tweet_data = [
