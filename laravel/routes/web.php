@@ -26,7 +26,7 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'twitter'], function ()
 });
 
 // TwitterOAuth認証後のページ
-Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard'], function ()
+Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => 'auth'], function ()
 {
     // TOP
     Route::get('/', 'DashboardsController@index');
