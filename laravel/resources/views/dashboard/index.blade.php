@@ -6,36 +6,30 @@
             <h3 class="page-title"> Form elements </h3>
         </div>
         <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Default form</h4>
-                    <p class="card-description"> Basic form layout </p>
-                    <form class="forms-sample">
-                    <div class="form-group">
-                        <label for="exampleInputUsername1">Username</label>
-                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                    <div class="card-body">
+                        <img src="{{ asset('image/circle.svg') }}" class="card-img-absolute">
+                        <p class="font-weight-bold text-white">追い込みツイート数</p>
+                        <div class="text-center">
+                            <h2 class="display-1 font-weight-bold text-white">{{ $tweet_count }}</h2>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputConfirmPassword1">Confirm Password</label>
-                        <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-check form-check-flat form-check-primary">
-                        <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input"> Remember me </label>
-                    </div>
-                    <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                    </form>
                 </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                    <div class="card-body">
+                        <img src="{{ asset('image/circle.svg') }}" class="card-img-absolute">
+                        <p class="font-weight-bold text-white">直近追い込み予定</p>
+                        <div class="text-center">
+                            @if (!empty($tweet_latest['cron']))
+                                <h2 class="display-4 text-white"> {{ $tweet_latest['cron']['reservation_at'] }}</h2>
+                            @else
+                                <h2 class="display-1 font-weight-bold text-white">なし</h2>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,23 +2,19 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
+use App\Tweet;
 
 class DashboardsController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function index(Tweet $tweet)
     {
-        $this->middleware('auth');
-    }
+        $user_info = Auth::user();
 
-    public function index()
-    {
-        return view('dashboard.index');
+        $tweet_count = $tweet->getTweetCount($user_info['id']);
+        $tweet_latest = $tweet->getTweetLatestDate($user_info['id']);
+
+        return view('dashboard.index', compact('user_info', 'tweet_count', 'tweet_latest'));
     }
 }
