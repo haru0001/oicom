@@ -27,6 +27,9 @@ class User extends Authenticatable
     public function firstOrCreateUser(object $twitter_user) : User
     {
         return $this->firstOrCreate([
+            'email' => $twitter_user->email
+            ],
+            [
             'twitter_id'           => $twitter_user->id,
             'screen_name'          => $twitter_user->nickname,
             'name'                 => $twitter_user->name,
