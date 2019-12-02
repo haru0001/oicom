@@ -43,10 +43,4 @@ class Tweet extends Model
     {
         return $this->where('user_id', $user_id)->count();
     }
-
-    // 直近のツイート情報
-    public function getTweetLatestDate(int $user_id) : Array
-    {
-        return $this->with('cron')->where('user_id', $user_id)->first()->toArray();
-    }
 }

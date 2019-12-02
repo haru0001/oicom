@@ -17,21 +17,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin stretch-card">
-                <div class="card bg-gradient-success card-img-holder text-white">
-                    <div class="card-body">
-                        <img src="{{ asset('image/circle.svg') }}" class="card-img-absolute">
-                        <p class="font-weight-bold text-white">直近追い込み予定</p>
-                        <div class="text-center">
-                            @if (!empty($tweet_latest['cron']))
-                                <h2 class="display-4 text-white"> {{ $tweet_latest['cron']['reservation_at'] }}</h2>
-                            @else
-                                <h2 class="display-1 font-weight-bold text-white">なし</h2>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
