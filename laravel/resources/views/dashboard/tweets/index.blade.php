@@ -2,39 +2,29 @@
 
 @section('content')
     <div class="content-wrapper">
-        <div class="page-header">
-            <h3 class="page-title">追い込んだツイート一覧</h3>
+        <div class="page-header mb-5">
+            <h1 class="page-title">追い込んだツイート一覧</h1>
         </div>
         <div class="row">
             @if (!empty($tweets))
                 @foreach ($tweets as $tweet)
-                    <div class="col-md-6 offset-md-3 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-haeder d-flex p-4 w-100">
+                    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 mb-5">
+                        <div class="card bg-gradient-danger">
+                            <div class="card-haeder bg-card-image d-flex flex-column align-items-center p-3">
+                                <p class="font-weight-bold text-light">追い込み日時</p>
+                                <h2 class="font-weight-bold text-white m-0">2019-12-31 00:00</h2>
+                            </div>
+                            <div class="card-body bg-white">
+                                <p class="font-weight-bold text-dark display-5">{!! nl2br(e($tweet['text'])) !!}</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end bg-white border-0 p-4">
                                 <img src="{{ $user_info['profile_image_url'] }}" class="rounded-circle" width="50" height="50">
-                                <div class="ml-2 d-flex flex-column">
-                                    <p class="mb-0">{{ str_limit($user_info['name'], $limit = 30, $end = '...') }}</p>
-                                    <span class="text-secondary">{{ str_limit($user_info['screen_name'], $limit = 20, $end = '...') }}</span>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                {!! nl2br(e($tweet['text'])) !!}
-                            </div>
-                            <div class="card-footer bg-white text-right">
-                                @if ($tweet['cron'])
-                                    <span class="font-weight-bold text-secondary">追い込み予定日時</span>
-                                    <span class="font-weight-bold text-dark ml-2">{{ $tweet['cron']['reservation_at'] }}</span>
-                                @else
-                                    {{-- テスト --}}
-                                    <span class="font-weight-bold text-secondary">追い込み予定日時</span>
-                                    <span class="font-weight-bold text-dark ml-2">2019-12-31 00:00</span>
-                                @endif
                             </div>
                         </div>
                     </div>
                 @endforeach
             @else
-                <div class="col-md-12 grid-margin stretch-card">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
                             まだ投稿がありません
