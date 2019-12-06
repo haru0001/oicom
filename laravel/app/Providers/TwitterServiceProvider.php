@@ -32,8 +32,8 @@ class TwitterServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('twitter', function () {
-            $config = config('twitter');
-            return new TwitterOAuth($config['api_key'], $config['secret_key'], $config['access_token'], $config['access_token_secret']);
+            $config = config('services.twitter');
+            return new TwitterOAuth($config['client_id'], $config['client_secret']);
         });
     }
 
