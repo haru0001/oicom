@@ -43,4 +43,10 @@ class Tweet extends Model
     {
         return $this->where('user_id', $user_id)->count();
     }
+
+    // ツイート数のカウント
+    public function getTweetLatest(int $user_id) : ? Tweet
+    {
+        return $this->with('cron')->where('user_id', $user_id)->first();
+    }
 }
