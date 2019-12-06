@@ -10147,7 +10147,7 @@ h6, .h6 {
 
 p {
   font-size: .9375rem;
-  line-height: 1.5; }
+  line-height: 1.8; }
 
 .display-1 {
   font-size: 3.75rem; }
@@ -13000,6 +13000,7 @@ dl {
   min-height: calc(100vh - 70px);
   background: #ffffff;
   /* font-family: "ubuntu-regular", sans-serif; */
+  position: fixed;
   padding: 0;
   width: 260px;
   z-index: 11;
@@ -13316,8 +13317,9 @@ dl {
 .main-panel {
   -webkit-transition: width 0.25s ease, margin 0.25s ease;
   transition: width 0.25s ease, margin 0.25s ease;
-  width: calc(100% - 260px);
+  width: 100%;
   min-height: calc(100vh - 70px);
+  margin-left: 260px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
