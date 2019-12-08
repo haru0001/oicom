@@ -12,7 +12,11 @@
                         <div class="card bg-gradient-danger">
                             <div class="card-haeder bg-card-image d-flex flex-column align-items-center p-3">
                                 <p class="font-weight-bold text-light">追い込み日時</p>
-                                <h2 class="font-weight-bold text-white m-0">2019-12-31 00:00</h2>
+                                @if (!empty($tweet['cron']))
+                                    <h2 class="font-weight-bold text-white m-0">{{ $tweet['cron']['reservation_at'] }}</h2>
+                                @else
+                                    <h2 class="font-weight-bold text-white m-0">2019-12-31 00:00</h2>
+                                @endif
                             </div>
                             <div class="card-body bg-white">
                                 <p class="font-weight-bold text-dark display-5">{!! nl2br(e($tweet['text'])) !!}</p>
