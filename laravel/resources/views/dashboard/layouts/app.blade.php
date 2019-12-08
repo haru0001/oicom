@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 
         <!-- Font Awesome -->
-        <script src="{{ asset('fontawesome/js/all.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/all.min.js') }}" type="text/javascript"></script>
 
         <!-- Script -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -56,7 +56,7 @@
                         </li>
                     </ul>
                     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                        <span class="mdi mdi-menu">test</span>
+                        <i class="fal fa-bars"></i>
                     </button>
                 </div>
             </nav>
