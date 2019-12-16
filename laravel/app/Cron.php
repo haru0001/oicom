@@ -14,8 +14,17 @@ class Cron extends Model
 
     public $timestamps = false;
 
-    public function cronStore(array $data)
+    // cronsとtweetsのリレーションは一対一の関係
+    public function tweet()
     {
-        $this->fill($data)->save();
+        return $this->belongsTo(Tweet::class);
+    }
+
+    public function findReservationTweet(String $now) : Object
+    {
+        return $this->with('tweet')
+                    ->where('reservation_at', $now)
+                    ->where('tweet_complate_flg', 0)
+                    ->get();
     }
 }
