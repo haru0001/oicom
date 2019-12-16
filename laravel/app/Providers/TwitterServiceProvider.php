@@ -13,6 +13,8 @@ class TwitterServiceProvider extends ServiceProvider
      * @var bool
      */
     protected $defer = true;
+    public $token;
+    public $secret_toke;
 
     /**
      * Bootstrap services.
@@ -32,8 +34,12 @@ class TwitterServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('twitter', function () {
-            $config = config('services.twitter');
-            return new TwitterOAuth($config['client_id'], $config['client_secret']);
+            return new TwitterOAuth(
+                config('services.twitter.client_id'),
+                config('services.twitter.client_secret'),
+                $this->token,
+                $this->secret_token
+            );
         });
     }
 
