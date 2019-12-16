@@ -12,7 +12,7 @@
                         <img src="{{ $user_info['profile_image_url'] }}" class="rounded-circle" width="50" height="50">
                         <div class="ml-2 d-flex flex-column">
                             <p class="font-weight-bold text-dark mb-0">{{ str_limit($user_info['name'], $limit = 30, $end = '...') }}</p>
-                            <span class="text-secondary">{{ str_limit($user_info['screen_name'], $limit = 20, $end = '...') }}</span>
+                            <span class="text-secondary text-small">{{ str_limit($user_info['screen_name'], $limit = 20, $end = '...') }}</span>
                         </div>
                     </div>
                     <div class="card-body d-flex flex-column">

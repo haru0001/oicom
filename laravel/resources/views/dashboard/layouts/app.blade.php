@@ -65,7 +65,7 @@
                 <nav class="sidebar sidebar-offcanvas" id="sidebar">
                     <ul class="nav">
                         <li class="nav-item nav-profile">
-                            <a href="#" href="{{ url('dashboard/') }}" class="nav-link">
+                            <a href="{{ url('dashboard/') }}" class="nav-link">
                                 <div class="nav-profile-image">
                                     <img src="{{ $user->profile_image_url }}" alt="profile">
                                     <span class="login-status online"></span>
@@ -96,7 +96,7 @@
                         </li>
 
                         <li class="nav-item border-top text-center mt-5">
-                            <a href="{{ url('dashboard') }}" class="nav-link justify-content-center">
+                            <a href="{{ url('twitter/logout') }}" class="nav-link justify-content-center">
                                 <span class="menu-title text-secondary">Logout</span>
                             </a>
                         </li>
